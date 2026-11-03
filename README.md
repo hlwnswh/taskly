@@ -31,4 +31,7 @@ TASKLY menyediakan fitur filter untuk melihat:
 - Tugas yang sudah selesai
 
 ## Catatan Project
+
 TASKLY membantu mahasiswa mengatur tugas kuliah dengan lebih terstruktur.
+
+TASKLY memudahkan mahasiswa mencatat dan menyelesaikan tugas perkuliahan.
