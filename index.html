@@ -5,103 +5,27 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>taskly</title>
+    <style>
+      .menu-penjelasan {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 10;
+        padding: 6px 14px;
+        border: 1px solid #d9c5cb;
+        border-radius: 999px;
+        background: #fffdfc;
+        color: #7a5c66;
+        font-family: inherit;
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+      .menu-penjelasan:hover { background: #f3e8eb; }
+    </style>
   </head>
   <body>
+    <a class="menu-penjelasan" href="/penjelasan.html">Penjelasan</a>
     <div id="app"></div>
-
-    <section id="penjelasan" class="penjelasan">
-      <h2>Penjelasan Teknologi yang Digunakan di TASKLY</h2>
-
-      <h3>1. Git dan GitHub</h3>
-      <p>Git adalah sistem untuk mencatat riwayat perubahan kode, sedangkan GitHub adalah tempat menyimpan repository Git secara online. Di project ini saya memakai:</p>
-      <ul>
-        <li><strong>Commit</strong> untuk menyimpan setiap perubahan beserta catatannya.</li>
-        <li><strong>Branch</strong> untuk mengerjakan fitur terpisah dari branch utama (<code>main</code>), misalnya <code>feature/task-filter</code> dan <code>feature/task-management</code>.</li>
-        <li><strong>Merge</strong> untuk menggabungkan branch ke <code>main</code>.</li>
-        <li><strong>Merge conflict</strong> terjadi saat dua branch mengubah bagian file yang sama. Saya mencobanya di <code>README.md</code> lalu menyelesaikannya secara manual.</li>
-        <li><strong>Pull Request</strong> untuk mengajukan penggabungan branch ke <code>main</code>. Saya membuat Pull Request #1 dan menggabungkannya.</li>
-        <li><strong>Push dan pull</strong> untuk mengirim dan mengambil perubahan antara komputer dan GitHub.</li>
-        <li><strong>.gitignore</strong> untuk mencegah file tertentu (seperti <code>node_modules</code> dan <code>.env</code>) ikut ter-upload.</li>
-      </ul>
-
-      <h3>2. npm</h3>
-      <p>npm adalah pengelola paket untuk project JavaScript dan TypeScript. Daftar paket dan perintahnya ada di <code>package.json</code>.</p>
-      <ul>
-        <li><strong>dependencies</strong>: paket yang dibutuhkan aplikasi saat berjalan.</li>
-        <li><strong>devDependencies</strong>: paket yang hanya dipakai saat pengembangan, misalnya TypeScript dan Vite.</li>
-        <li><strong>npm scripts</strong>: perintah singkat seperti <code>npm run dev</code> (menjalankan aplikasi), <code>npm run build</code> (membuat versi produksi), dan <code>npm run preview</code> (melihat hasil build).</li>
-        <li><strong>Semantic versioning</strong> memakai format <code>MAJOR.MINOR.PATCH</code>, misalnya <code>1.2.3</code>. MAJOR naik jika ada perubahan besar yang bisa merusak kompatibilitas, MINOR naik jika ada fitur baru, dan PATCH naik jika hanya perbaikan bug. Tanda <code>^</code> berarti boleh update MINOR dan PATCH, sedangkan <code>~</code> berarti hanya boleh update PATCH.</li>
-      </ul>
-
-      <h3>3. TypeScript</h3>
-      <p>TypeScript adalah JavaScript yang ditambah sistem tipe data, sehingga kesalahan bisa ketahuan sebelum aplikasi dijalankan. Di project ini saya memakai:</p>
-      <ul>
-        <li><strong>Primitive types</strong>: <code>string</code>, <code>number</code>, <code>boolean</code></li>
-        <li><strong>Array</strong>: daftar tugas</li>
-        <li><strong>Interface</strong>: bentuk data sebuah tugas</li>
-        <li><strong>Type alias dan union type</strong>: misalnya status tugas yang hanya boleh berisi dua pilihan</li>
-        <li><strong>Generics sederhana</strong>: fungsi yang bisa dipakai untuk berbagai tipe data</li>
-      </ul>
-      <!-- GANTI contoh di bawah dengan kode asli dari folder src milikmu -->
-      <pre><code>type TaskStatus = "Belum Selesai" | "Selesai";
-
-    interface Task {
-      id: number;
-      title: string;
-      status: TaskStatus;
-    }
-
-    const tasks: Task[] = [];</code></pre>
-
-      <h3>4. Vite</h3>
-      <p>Vite adalah alat untuk menjalankan dan membangun aplikasi web. Saat pengembangan, Vite menyediakan server lokal yang cepat dan langsung memperbarui tampilan saat kode diubah. Saat <code>npm run build</code>, Vite menggabungkan dan mengecilkan semua file menjadi folder <code>dist</code> yang siap diunggah.</p>
-
-      <h3>5. Environment Variables</h3>
-      <p>Environment variable adalah pengaturan yang disimpan di luar kode, dalam file <code>.env</code>. Di Vite, nama variabelnya harus diawali <code>VITE_</code>, misalnya <code>VITE_APP_NAME</code> dan <code>VITE_APP_VERSION</code>.</p>
-      <ul>
-        <li><code>.env</code> tidak diunggah ke GitHub karena masuk <code>.gitignore</code>.</li>
-        <li><code>.env.example</code> diunggah sebagai contoh isi tanpa data rahasia.</li>
-        <li>Nilai variabel yang dipakai di aplikasi frontend ikut terlihat di hasil build. Karena itu, password atau API key rahasia tidak boleh disimpan di sini. Saya hanya memakai konfigurasi non-rahasia seperti nama dan versi aplikasi.</li>
-      </ul>
-
-      <h3>6. Perbedaan Compiler, Transpiler, dan Bundler</h3>
-      <ul>
-        <li><strong>Compiler</strong> menerjemahkan kode dari satu bahasa ke bentuk lain yang lebih rendah levelnya, misalnya C ke kode mesin.</li>
-        <li><strong>Transpiler</strong> menerjemahkan kode ke bahasa lain yang levelnya sejajar. Contohnya TypeScript menjadi JavaScript, supaya bisa dibaca browser.</li>
-        <li><strong>Bundler</strong> menggabungkan banyak file kode dan paket menjadi sedikit file yang efisien. Vite berperan sebagai bundler saat proses build.</li>
-      </ul>
-      <p>Singkatnya, TypeScript ditranspile menjadi JavaScript, lalu Vite menggabungkannya menjadi file siap pakai di folder <code>dist</code>.</p>
-    </section>
-
-    <style>
-      .penjelasan {
-        width: 100%;
-        box-sizing: border-box;
-        max-width: 760px;
-        margin: 48px auto;
-        padding: 0 16px;
-        line-height: 1.65;
-      }
-      .penjelasan h2 { margin-bottom: 16px; }
-      .penjelasan h3 { margin-top: 28px; margin-bottom: 8px; }
-      .penjelasan ul { padding-left: 22px; }
-      .penjelasan li { margin-bottom: 6px; }
-      .penjelasan code {
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 0.92em;
-        background: rgba(127, 127, 127, 0.15);
-        padding: 1px 5px;
-        border-radius: 4px;
-      }
-      .penjelasan pre {
-        background: rgba(127, 127, 127, 0.15);
-        padding: 12px 14px;
-        border-radius: 6px;
-        overflow-x: auto;
-      }
-      .penjelasan pre code { background: none; padding: 0; }
-    </style>
-
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

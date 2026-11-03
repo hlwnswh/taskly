@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penjelasan Teknologi - TASKLY</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #fbf7f4;
+        color: #4a3b3f;
+        font-family: "DM Sans", system-ui, sans-serif;
+        line-height: 1.7;
+      }
+      .atas {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 20px 16px 0;
+      }
+      .atas a {
+        display: inline-block;
+        padding: 6px 14px;
+        border: 1px solid #d9c5cb;
+        border-radius: 999px;
+        color: #7a5c66;
+        text-decoration: none;
+        font-size: 0.9rem;
+        background: #fffdfc;
+      }
+      .atas a:hover { background: #f3e8eb; }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 8px 16px 64px;
+      }
+      h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        color: #7a5c66;
+        margin: 24px 0 8px;
+        font-size: 1.9rem;
+      }
+      .sub { margin: 0 0 8px; color: #9a8389; }
+      h3 { margin: 32px 0 8px; font-size: 1.15rem; }
+      ul { padding-left: 22px; }
+      li { margin-bottom: 6px; }
+      code {
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 0.92em;
+        background: rgba(122, 92, 102, 0.12);
+        padding: 1px 5px;
+        border-radius: 4px;
+      }
+      pre {
+        background: rgba(122, 92, 102, 0.1);
+        padding: 12px 14px;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      pre code { background: none; padding: 0; }
+    </style>
+  </head>
+  <body>
+    <nav class="atas"><a href="/">&larr; Kembali ke aplikasi</a></nav>
+    <main>
+      <h1>Penjelasan Teknologi di TASKLY</h1>
+      <p class="sub">Git, npm, TypeScript, Vite, dan environment variables.</p>
+
+  
+
+  <h3>1. Git dan GitHub</h3>
+  <p>Git adalah sistem untuk mencatat riwayat perubahan kode, sedangkan GitHub adalah tempat menyimpan repository Git secara online. Di project ini saya memakai:</p>
+  <ul>
+    <li><strong>Commit</strong> untuk menyimpan setiap perubahan beserta catatannya.</li>
+    <li><strong>Branch</strong> untuk mengerjakan fitur terpisah dari branch utama (<code>main</code>), misalnya <code>feature/task-filter</code> dan <code>feature/task-management</code>.</li>
+    <li><strong>Merge</strong> untuk menggabungkan branch ke <code>main</code>.</li>
+    <li><strong>Merge conflict</strong> terjadi saat dua branch mengubah bagian file yang sama. Saya mencobanya di <code>README.md</code> lalu menyelesaikannya secara manual.</li>
+    <li><strong>Pull Request</strong> untuk mengajukan penggabungan branch ke <code>main</code>. Saya membuat Pull Request #1 dan menggabungkannya.</li>
+    <li><strong>Push dan pull</strong> untuk mengirim dan mengambil perubahan antara komputer dan GitHub.</li>
+    <li><strong>.gitignore</strong> untuk mencegah file tertentu (seperti <code>node_modules</code> dan <code>.env</code>) ikut ter-upload.</li>
+  </ul>
+
+  <h3>2. npm</h3>
+  <p>npm adalah pengelola paket untuk project JavaScript dan TypeScript. Daftar paket dan perintahnya ada di <code>package.json</code>.</p>
+  <ul>
+    <li><strong>dependencies</strong>: paket yang dibutuhkan aplikasi saat berjalan. Project ini belum memakai dependencies karena aplikasinya dibuat hanya dengan TypeScript, HTML, dan CSS tanpa library tambahan.</li>
+    <li><strong>devDependencies</strong>: paket yang hanya dipakai saat pengembangan. Di project ini ada <code>typescript</code> dan <code>vite</code>.</li>
+    <li><strong>npm scripts</strong>: perintah singkat seperti <code>npm run dev</code> (menjalankan aplikasi), <code>npm run build</code> (menjalankan <code>tsc &amp;&amp; vite build</code>, yaitu memeriksa kode TypeScript lalu membuat versi produksi), dan <code>npm run preview</code> (melihat hasil build).</li>
+    <li><strong>Semantic versioning</strong> memakai format <code>MAJOR.MINOR.PATCH</code>, misalnya <code>1.2.3</code>. MAJOR naik jika ada perubahan besar yang bisa merusak kompatibilitas, MINOR naik jika ada fitur baru, dan PATCH naik jika hanya perbaikan bug. Tanda <code>^</code> berarti boleh update MINOR dan PATCH, sedangkan <code>~</code> berarti hanya boleh update PATCH. Contoh di project ini: <code>"vite": "^8.3.5"</code> boleh naik ke 8.x.x, sedangkan <code>"typescript": "~7.0.2"</code> hanya boleh naik ke 7.0.x.</li>
+  </ul>
+
+  <h3>3. TypeScript</h3>
+  <p>TypeScript adalah JavaScript yang ditambah sistem tipe data, sehingga kesalahan bisa ketahuan sebelum aplikasi dijalankan. Di project ini saya memakai:</p>
+  <ul>
+        <li><strong>Primitive types</strong>: <code>string</code>, <code>number</code>, <code>boolean</code>, contohnya <code>appName: string</code>, <code>id: number</code>, dan <code>isAppReady: boolean</code>.</li>
+        <li><strong>Array</strong>: daftar tugas disimpan di <code>tasks: Task[]</code>.</li>
+        <li><strong>Interface</strong>: <code>Task</code> menentukan bentuk data sebuah tugas (id, judul, mata kuliah, deadline, status selesai).</li>
+        <li><strong>Type alias dan union type</strong>: <code>TaskStatus</code> hanya boleh berisi <code>'Belum Selesai'</code> atau <code>'Selesai'</code>, dan <code>TaskFilter</code> ditambah pilihan <code>'Semua'</code>.</li>
+        <li><strong>Generics sederhana</strong>: fungsi <code>loadData&lt;T&gt;()</code> bisa memuat data dari Local Storage untuk tipe apa pun, dan dipakai sebagai <code>loadData&lt;Task[]&gt;()</code> untuk memuat daftar tugas.</li>
+      </ul>
+    <pre><code>type TaskStatus = 'Belum Selesai' | 'Selesai'
+type TaskFilter = 'Semua' | 'Belum Selesai' | 'Selesai'
+
+interface Task {
+  id: number
+  title: string
+  course: string
+  deadline: string
+  completed: boolean
+}
+
+function loadData&lt;T&gt;(key: string, fallback: T): T {
+  const saved = localStorage.getItem(key)
+
+  if (saved) {
+    try {
+      return JSON.parse(saved) as T
+    } catch {
+      return fallback
+    }
+  }
+
+  return fallback
+}
+
+let tasks: Task[] = loadData&lt;Task[]&gt;('taskly-tasks', [])
+const appName: string = import.meta.env.VITE_APP_NAME || 'TASKLY'
+const isAppReady: boolean = true</code></pre>
+
+  <h3>4. Vite</h3>
+  <p>Vite adalah alat untuk menjalankan dan membangun aplikasi web. Saat pengembangan, Vite menyediakan server lokal yang cepat dan langsung memperbarui tampilan saat kode diubah. Saat <code>npm run build</code>, Vite menggabungkan dan mengecilkan semua file menjadi folder <code>dist</code> yang siap diunggah.</p>
+
+  <h3>5. Environment Variables</h3>
+  <p>Environment variable adalah pengaturan yang disimpan di luar kode, dalam file <code>.env</code>. Di Vite, nama variabelnya harus diawali <code>VITE_</code>, misalnya <code>VITE_APP_NAME</code> dan <code>VITE_APP_VERSION</code>. Nilainya dibaca di kode lewat <code>import.meta.env</code> dan ditampilkan di aplikasi (nama di sidebar dan versi di bagian bawah sidebar).</p>
+  <ul>
+    <li><code>.env</code> tidak diunggah ke GitHub karena masuk <code>.gitignore</code>.</li>
+    <li><code>.env.example</code> diunggah sebagai contoh isi tanpa data rahasia.</li>
+    <li>Karena <code>.env</code> tidak ada di GitHub, proses build di GitHub memakai nilai cadangan yang ditulis di kode (<code>TASKLY</code> dan <code>1.0.0</code>).</li>
+        <li>Nilai variabel yang dipakai di aplikasi frontend ikut terlihat di hasil build. Karena itu, password atau API key rahasia tidak boleh disimpan di sini. Saya hanya memakai konfigurasi non-rahasia seperti nama dan versi aplikasi.</li>
+  </ul>
+
+  <h3>6. Perbedaan Compiler, Transpiler, dan Bundler</h3>
+  <ul>
+    <li><strong>Compiler</strong> menerjemahkan kode dari satu bahasa ke bentuk lain yang lebih rendah levelnya, misalnya C ke kode mesin.</li>
+    <li><strong>Transpiler</strong> menerjemahkan kode ke bahasa lain yang levelnya sejajar. Contohnya TypeScript menjadi JavaScript, supaya bisa dibaca browser.</li>
+    <li><strong>Bundler</strong> menggabungkan banyak file kode dan paket menjadi sedikit file yang efisien. Vite berperan sebagai bundler saat proses build.</li>
+  </ul>
+  <p>Singkatnya, di project ini <code>tsc</code> memeriksa kode TypeScript saat <code>npm run build</code>, lalu Vite mengubahnya menjadi JavaScript dan menggabungkannya menjadi file siap pakai di folder <code>dist</code>.</p>
+
+    </main>
+  </body>
+</html>
