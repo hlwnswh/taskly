@@ -23,3 +23,9 @@ TASKLY adalah aplikasi sederhana untuk membantu mahasiswa mengelola tugas kuliah
 2. Jalankan npm install.
 3. Jalankan npm run dev.
 4. Buka alamat localhost yang ditampilkan.
+
+## Fitur Filter Tugas
+TASKLY menyediakan fitur filter untuk melihat:
+- Semua tugas
+- Tugas yang belum selesai
+- Tugas yang sudah selesai
