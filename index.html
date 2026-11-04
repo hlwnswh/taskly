@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>taskly</title>
     <style>
-      .menu-penjelasan {
+      .menu-top {
         position: fixed;
         top: 16px;
         right: 16px;
         z-index: 10;
+        display: flex;
+        gap: 8px;
+      }
+      .menu-penjelasan {
         padding: 6px 14px;
         border: 1px solid #d9c5cb;
         border-radius: 999px;
@@ -24,7 +28,10 @@
     </style>
   </head>
   <body>
-    <a class="menu-penjelasan" href="/penjelasan.html">Penjelasan</a>
+    <nav class="menu-top">
+      <a class="menu-penjelasan" href="/penjelasan.html">Penjelasan</a>
+      <a class="menu-penjelasan" href="/studytask/">StudyTask</a>
+    </nav>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
